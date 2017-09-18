@@ -11,11 +11,12 @@ class App extends Component {
 
   state = {
     currentlyReading: [],
-    wantToRead:[],
-    read:[]
+    wantToRead: [],
+    read: [],
+    none:[]
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
     BooksAPI.getAll().then((books) => {
       console.log(books)
@@ -27,6 +28,18 @@ class App extends Component {
     })
   }
 
+  updateShelf = (toShelf, book) => {
+    let fromShelf = book.shelf;
+    BooksAPI.update(book, toShelf).then(res => {
+      book.shelf = toShelf
+
+      this.setState(state => ({
+          [toShelf]: state[toShelf].concat(book),
+          [fromShelf]: state[fromShelf].filter((b) => b.id !== book.id)
+      }))
+  })
+	}
+
   render() {
     return (
       <div className="App">
@@ -35,26 +48,26 @@ class App extends Component {
           <nav>
             <ul>
               <li>
-              <Link to="/"><img src={logo} className="App-logo" alt="logo" />My Books</Link>
+                <Link to="/"><img src={logo} className="App-logo" alt="logo" />My Books</Link>
               </li>
             </ul>
           </nav>
         </header>
-        
+
         <Route exact path="/" render={() => (
           <section className="mainContent">
-            <Shelf books={this.state.currentlyReading} shelfName="Currently Reading"/>
-            <Shelf books={this.state.wantToRead} shelfName="Wanna Read"/>
-            <Shelf books={this.state.read} shelfName="Read"/>
+            <Shelf books={this.state.currentlyReading} shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf} />
+            <Shelf books={this.state.wantToRead} shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf} />
+            <Shelf books={this.state.read} shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} />
             <div className="open-search">
               <Link to="/search">Add a book</Link>
             </div>
           </section>
-          )} />
+        )} />
 
-          <Route path="/search" render={({ history }) => (
-            <BookSearch />
-          )}/>
+        <Route path="/search" render={({ history }) => (
+          <BookSearch />
+        )} />
       </div>
     );
   }
