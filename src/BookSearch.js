@@ -13,7 +13,7 @@ class BookSearch extends Component {
 		this.setState({ query: query })
 		BooksAPI.search(this.state.query, 20).then((books) => {
 			console.log(typeof books);
-			if(typeof books != "undefined" && typeof books.map == "function"){
+			if(typeof books !== "undefined" && typeof books.map === "function"){
 			this.setState({ books: books});
 			}
 		  })
@@ -38,7 +38,7 @@ class BookSearch extends Component {
 										<div className="book-cover" style={{
 											width: 128,
 											height: 193,
-											backgroundImage: typeof book.imageLinks == "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
+											backgroundImage: typeof book.imageLinks === "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
 										}}>
 										</div>
 										<div className="book-shelf-changer">
@@ -51,8 +51,8 @@ class BookSearch extends Component {
 											</select>
 										</div>
 									</div>
-									<div className="book-title">{typeof book.title == "undefined" ? "" : book.title}</div>
-									<div className="book-authors">{typeof book.authors == "undefined" ? "": book.authors.join(', ')}</div>
+									<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
+									<div className="book-authors">{typeof book.authors === "undefined" ? "": book.authors.join(', ')}</div>
 								</div>
 							</li>
 						))}

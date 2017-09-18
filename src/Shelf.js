@@ -16,7 +16,7 @@ class Shelf extends Component {
 												<div className="book-cover" style={{
 													width: 128,
 													height: 193,
-													backgroundImage: typeof book.imageLinks == "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
+													backgroundImage: typeof book.imageLinks === "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
 												}}>
 												</div>
 												<div className="book-shelf-changer">
@@ -29,8 +29,8 @@ class Shelf extends Component {
 													</select>
 												</div>
 											</div>
-											<div className="book-title">{typeof book.title == "undefined" ? "" : book.title}</div>
-											<div className="book-authors">{typeof book.authors == "undefined" ? "": book.authors.join(', ')}</div>
+											<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
+											<div className="book-authors">{typeof book.authors === "undefined" ? "": book.authors.join(', ')}</div>
 										</div>
 									</li>
 								))}
