@@ -18,7 +18,6 @@ class Shelf extends Component {
 													height: 193,
 													backgroundImage: typeof book.imageLinks == "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
 												}}>
-												No Cover
 												</div>
 												<div className="book-shelf-changer">
 													<select value={book.shelf} onChange={(event) => this.props.updateShelf(event.target.value, book)} >

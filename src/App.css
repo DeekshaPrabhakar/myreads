@@ -11,12 +11,16 @@
 
 .App-header{
   background-color: #A1CDCA; 
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 80px;
+  z-index: 6;
 }
 
-.App-header nav, .mainContent {
+.App-header nav {
   max-width: 80%; 
   margin: 0 auto; 
-  padding: 10px; 
 }
 
 .App-header nav ul, .mainContent ul { 
@@ -38,6 +42,10 @@
   font-size: large;
 }
 
+.mainContent {
+  max-width: 80%; 
+  margin: 90px auto;
+}
 .mainContent h2 { 
   font-size: 1.5em; 
   font-weight: 100;
@@ -92,6 +100,7 @@
 .book-title {
   margin-top: 10px;
   color: #008C80;
+  margin-bottom: 2px;
 }
 .book-authors {
   color: #A1CDCA;
@@ -165,7 +174,7 @@
 .search-books-bar {
   position: fixed;
   width: 100%;
-  top: 80;
+  top: 80px;
   left: 0;
   z-index: 5;
   display: flex;
@@ -212,7 +221,7 @@
 }
 
 .search-books-results {
-  padding: 80px 10px 20px;
+  padding: 160px 10px 20px;
 }
 
 /*@keyframes App-logo-spin {
