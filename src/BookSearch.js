@@ -18,6 +18,18 @@ class BookSearch extends Component {
 			}
 		  })
 	}
+ 
+	findBookShelf = (bookID) => {
+
+		const mybooks = this.props.mybooks;
+		if(mybooks.length >0){
+			var book = mybooks.filter(x => x.id === bookID);
+			if(book.length > 0){
+				return book[0].shelf;
+			}
+		}
+		return "none";
+	}
 
 	render() {
 		return (
@@ -42,7 +54,7 @@ class BookSearch extends Component {
 										}}>
 										</div>
 										<div className="book-shelf-changer">
-											<select value={book.shelf} onChange={(event) => this.props.updateShelf(event.target.value, book)} >
+											<select value={ this.findBookShelf(book.id)}>
 												<option value="none" disabled>Move to...</option>
 												<option value="currentlyReading">Currently Reading</option>
 												<option value="wantToRead">Want to Read</option>
