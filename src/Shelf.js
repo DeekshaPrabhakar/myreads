@@ -30,7 +30,7 @@ class Shelf extends Component {
 												</div>
 											</div>
 											<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
-											<div className="book-authors">{typeof book.authors === "undefined" ? "": book.authors.join(', ')}</div>
+											<div className="book-authors">{typeof book.authors === "undefined" ? "" : book.authors.join(', ')}</div>
 										</div>
 									</li>
 								))}

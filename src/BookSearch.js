@@ -6,29 +6,32 @@ class BookSearch extends Component {
 
 	state = {
 		query: '',
-		books:[]
+		books: []
 	}
 
 	updateQuery = (query) => {
+		
 		this.setState({ query: query })
-		BooksAPI.search(this.state.query, 20).then((books) => {
-			console.log(typeof books);
-			if(typeof books !== "undefined" && typeof books.map === "function"){
-			this.setState({ books: books});
-			}
-		  })
-	}
- 
-	findBookShelf = (bookID) => {
-
 		const mybooks = this.props.mybooks;
-		if(mybooks.length >0){
-			var book = mybooks.filter(x => x.id === bookID);
-			if(book.length > 0){
-				return book[0].shelf;
+
+		BooksAPI.search(this.state.query, 20).then((books) => {
+			
+			if (typeof books !== "undefined" && typeof books.map === "function") {
+
+				//compare with my books in shelves and update the shelf property
+				books.forEach(function (book) {
+					var mybook = mybooks.filter(x => x.id === book.id);
+					if (mybook.length > 0) {
+						book.shelf = mybook[0].shelf;
+					}
+					else{
+						book.shelf = "none";
+					}
+				});
+
+				this.setState({ books: books });
 			}
-		}
-		return "none";
+		})
 	}
 
 	render() {
@@ -44,7 +47,7 @@ class BookSearch extends Component {
 					<ol className="books-grid">
 						{this.state.books.map((book) => (
 							<li key={book.id}>
-								
+
 								<div className="book">
 									<div className="book-top">
 										<div className="book-cover" style={{
@@ -54,7 +57,9 @@ class BookSearch extends Component {
 										}}>
 										</div>
 										<div className="book-shelf-changer">
-											<select value={ this.findBookShelf(book.id)}>
+											<select value={book.shelf} onChange={(event) => {
+												this.props.updateShelf(event.target.value, book);
+											}} >
 												<option value="none" disabled>Move to...</option>
 												<option value="currentlyReading">Currently Reading</option>
 												<option value="wantToRead">Want to Read</option>
@@ -64,7 +69,7 @@ class BookSearch extends Component {
 										</div>
 									</div>
 									<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
-									<div className="book-authors">{typeof book.authors === "undefined" ? "": book.authors.join(', ')}</div>
+									<div className="book-authors">{typeof book.authors === "undefined" ? "" : book.authors.join(', ')}</div>
 								</div>
 							</li>
 						))}

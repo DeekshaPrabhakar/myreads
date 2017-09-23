@@ -13,8 +13,8 @@ class App extends Component {
     currentlyReading: [],
     wantToRead: [],
     read: [],
-    none:[],
-    mybooks:[]
+    none: [],
+    mybooks: []
   }
 
   componentDidMount() {
@@ -32,17 +32,17 @@ class App extends Component {
 
   updateShelf = (toShelf, book) => {
     console.log(book);
-    let fromShelf = typeof book.shelf !== "undefined" ? book.shelf: "none";
+    let fromShelf = typeof book.shelf !== "undefined" ? book.shelf : "none";
     BooksAPI.update(book, toShelf).then(res => {
       book.shelf = toShelf
 
 
       this.setState(state => ({
-          [toShelf]: state[toShelf].concat(book),
-          [fromShelf]: state[fromShelf].filter((b) => b.id !== book.id)
+        [toShelf]: state[toShelf].concat(book),
+        [fromShelf]: state[fromShelf].filter((b) => b.id !== book.id)
       }))
-  })
-	}
+    })
+  }
 
   render() {
     return (
@@ -70,7 +70,7 @@ class App extends Component {
         )} />
 
         <Route path="/search" render={({ history }) => (
-          <BookSearch mybooks={this.state.mybooks} />
+          <BookSearch mybooks={this.state.mybooks} updateShelf={this.updateShelf} />
         )} />
       </div>
     );
