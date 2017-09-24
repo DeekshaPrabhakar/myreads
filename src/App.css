@@ -126,22 +126,26 @@
   padding: 10px 15px;
   text-align: left;
 }
+.bookshelf-books li a {
+  text-decoration: none;
+}
 
 .book {
   width: 140px;
-  padding: 20px 10px 10px 0;
+  padding: 20px 40px 10px 0;
+  text-align: left;
 }
 
 .book-title,
 .book-authors {
   font-size: 0.8em;
 }
-.book-title {
+.book-title, .detail-title {
   margin-top: 10px;
   color: #008C80;
   margin-bottom: 2px;
 }
-.book-authors {
+.book-authors, .detail-authors  {
   color: #A1CDCA;
 }
 
@@ -176,7 +180,7 @@
 
 /* book cover */
 
-.book-cover {
+.book-cover, .detail-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
   border: 1px solid #008C80;
@@ -275,4 +279,53 @@
 
 
 
+/* Book Detail Page */
 
+.detail-cover {
+  display: inline-block;
+  margin-right: 10px;
+  border: 0;
+}
+
+.detail-title-author {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.detail-title {
+  font-size: 2em;
+  margin: 0 0 6px 0;
+}
+
+.detail-authors{
+  font-size: 1.4em;
+}
+
+.detail {
+  color: #008C80;
+}
+
+.detail h2 {
+  color: #008C80;
+  margin: 20px 0;
+  border-bottom: 1px solid #A1CDCA;
+}
+
+.detail-description {
+  font-size: 0.9em;
+  line-height: 2em;
+}
+
+.detail-info {
+  margin: 10px 0;
+}
+
+.detail-info label {
+   font-weight: 400;
+   margin-right: 10px;
+   color: #A1CDCA;
+}
+
+.detail-info span {
+  font-weight: 100;
+}

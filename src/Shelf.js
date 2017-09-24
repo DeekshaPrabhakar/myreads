@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 class Shelf extends Component {
 
 	state = {
-		isIndexPage: window.location.pathname === "/"
+		isIndexPage: this.props.location.pathname === "/"
 	}
 
 	render() {
+		const shelfBooks = this.state.isIndexPage ? this.props.books.slice(0,10) : this.props.books;
+
 		return (
 			<div className="list-books-content">
 				<div>
@@ -24,29 +26,34 @@ class Shelf extends Component {
 						</h2>
 						<div className="bookshelf-books">
 							<ol className={this.state.isIndexPage ? "books-grid-index" : "books-grid-detail"}>
-								{this.props.books.map((book) => (
+								{shelfBooks.map((book) => (
 									<li key={book.id}>
-										<div className="book">
-											<div className="book-top">
-												<div className="book-cover" style={{
-													width: 128,
-													height: 193,
-													backgroundImage: typeof book.imageLinks === "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
-												}}>
+										<Link to={{
+											pathname: '/books/' + book.id,
+											state: { book: book }
+										}}>
+											<div className="book">
+												<div className="book-top">
+													<div className="book-cover" style={{
+														width: 128,
+														height: 193,
+														backgroundImage: typeof book.imageLinks === "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
+													}}>
+													</div>
+													<div className="book-shelf-changer">
+														<select value={book.shelf} onChange={(event) => this.props.updateShelf(event.target.value, book)} >
+															<option value="none" disabled>Move to...</option>
+															<option value="currentlyReading">Currently Reading</option>
+															<option value="wantToRead">Want to Read</option>
+															<option value="read">Read</option>
+															<option value="none">None</option>
+														</select>
+													</div>
 												</div>
-												<div className="book-shelf-changer">
-													<select value={book.shelf} onChange={(event) => this.props.updateShelf(event.target.value, book)} >
-														<option value="none" disabled>Move to...</option>
-														<option value="currentlyReading">Currently Reading</option>
-														<option value="wantToRead">Want to Read</option>
-														<option value="read">Read</option>
-														<option value="none">None</option>
-													</select>
-												</div>
+												<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
+												<div className="book-authors">{typeof book.authors === "undefined" ? "" : book.authors.join(', ')}</div>
 											</div>
-											<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
-											<div className="book-authors">{typeof book.authors === "undefined" ? "" : book.authors.join(', ')}</div>
-										</div>
+										</Link>
 									</li>
 								))}
 							</ol>
