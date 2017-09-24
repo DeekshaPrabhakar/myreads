@@ -10,12 +10,12 @@ class BookSearch extends Component {
 	}
 
 	updateQuery = (query) => {
-		
+
 		this.setState({ query: query })
 		const mybooks = this.props.mybooks;
 
 		BooksAPI.search(this.state.query, 20).then((books) => {
-			
+
 			if (typeof books !== "undefined" && typeof books.map === "function") {
 
 				//compare with my books in shelves and update the shelf property
@@ -24,7 +24,7 @@ class BookSearch extends Component {
 					if (mybook.length > 0) {
 						book.shelf = mybook[0].shelf;
 					}
-					else{
+					else {
 						book.shelf = "none";
 					}
 				});
@@ -44,7 +44,7 @@ class BookSearch extends Component {
 					</div>
 				</div>
 				<div className="search-books-results">
-					<ol className="books-grid">
+					<ol className="books-grid-detail">
 						{this.state.books.map((book) => (
 							<li key={book.id}>
 

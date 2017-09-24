@@ -1,14 +1,29 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Shelf extends Component {
+
+	state = {
+		isIndexPage: window.location.pathname === "/"
+	}
+
 	render() {
 		return (
 			<div className="list-books-content">
 				<div>
 					<div className="bookshelf">
-						<h2 className="bookshelf-title">{this.props.shelfName}</h2>
+						<h2 className="bookshelf-title">
+							<span>
+								{this.props.shelfName}
+							</span>
+							<span className="shelf-allbooks">
+								{this.state.isIndexPage && (
+									<Link to={`/${this.props.shelfDetail}`}>See All ></Link>
+								)}
+							</span>
+						</h2>
 						<div className="bookshelf-books">
-							<ol className="books-grid">
+							<ol className={this.state.isIndexPage ? "books-grid-index" : "books-grid-detail"}>
 								{this.props.books.map((book) => (
 									<li key={book.id}>
 										<div className="book">

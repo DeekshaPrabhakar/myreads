@@ -18,7 +18,7 @@
   z-index: 6;
 }
 
-.App-header nav {
+.App-header nav, .search-books {
   max-width: 80%; 
   margin: 0 auto; 
 }
@@ -45,6 +45,7 @@
 .mainContent {
   max-width: 80%; 
   margin: 90px auto;
+  padding: 16px 0px;
 }
 .mainContent h2 { 
   font-size: 1.5em; 
@@ -70,13 +71,39 @@
 .bookshelf-title {
   border-bottom: 1px solid #A1CDCA;
 }
+
+.bookshelf-title span {
+  width: 50%;
+  display: inline-block;
+  text-align: left;
+}
+
+.bookshelf-title span:last-child {
+  text-align: right;
+}
+
+.bookshelf-title span:last-child a {
+  font-size: 0.7em;
+  text-decoration: none;
+  color: #008C80;
+}
+
 .bookshelf-books {
   text-align: center;
 }
 
 /* books grid */
 
-.books-grid {
+.books-grid-detail{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+} 
+
+.books-grid-search{
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -84,7 +111,17 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+} 
+
+.books-grid-index {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  overflow: auto;
 }
+
 .books-grid li {
   padding: 10px 15px;
   text-align: left;
@@ -92,7 +129,9 @@
 
 .book {
   width: 140px;
+  padding: 20px 10px 10px 0;
 }
+
 .book-title,
 .book-authors {
   font-size: 0.8em;
@@ -142,6 +181,8 @@
   background: #eee;
   border: 1px solid #008C80;
   border-radius:2%;
+  background-size: cover;
+  background-position: center;
 }
 .book-cover-title {
   padding: 20px 10px 0;
@@ -173,12 +214,14 @@
 
 .search-books-bar {
   position: fixed;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 1px solid #A1CDCA;
   top: 80px;
-  left: 0;
+  /* left: 0; */
   z-index: 5;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23); */
 }
 .search-books-input-wrapper {
   flex: 1;
@@ -221,7 +264,7 @@
 }
 
 .search-books-results {
-  padding: 160px 10px 20px;
+  margin: 160px 0;
 }
 
 /*@keyframes App-logo-spin {

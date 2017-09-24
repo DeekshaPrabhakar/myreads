@@ -20,7 +20,7 @@ class App extends Component {
   componentDidMount() {
 
     BooksAPI.getAll().then((books) => {
-      console.log(books)
+      //console.log(books)
       this.setState({
         currentlyReading: books.filter(book => book.shelf === 'currentlyReading'),
         wantToRead: books.filter(book => book.shelf === 'wantToRead'),
@@ -60,9 +60,36 @@ class App extends Component {
 
         <Route exact path="/" render={() => (
           <section className="mainContent">
-            <Shelf books={this.state.currentlyReading} shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf} />
-            <Shelf books={this.state.wantToRead} shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf} />
-            <Shelf books={this.state.read} shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} />
+            <Shelf books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf} />
+            <Shelf books={this.state.wantToRead} shelfDetail="WantToRead" shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf} />
+            <Shelf books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} />
+            <div className="open-search">
+              <Link to="/search">Add a book</Link>
+            </div>
+          </section>
+        )} />
+
+        <Route exact path="/CurrentlyReading" render={() => (
+          <section className="mainContent">
+            <Shelf books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf} />
+            <div className="open-search">
+              <Link to="/search">Add a book</Link>
+            </div>
+          </section>
+        )} />
+
+        <Route exact path="/WantToRead" render={() => (
+          <section className="mainContent">
+            <Shelf books={this.state.wantToRead} shelfDetail="WantToRead" shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf} />
+            <div className="open-search">
+              <Link to="/search">Add a book</Link>
+            </div>
+          </section>
+        )} />
+
+        <Route exact path="/Read" render={() => (
+          <section className="mainContent">
+            <Shelf books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} />
             <div className="open-search">
               <Link to="/search">Add a book</Link>
             </div>
