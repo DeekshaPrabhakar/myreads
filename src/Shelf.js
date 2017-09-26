@@ -7,8 +7,15 @@ class Shelf extends Component {
 		isIndexPage: this.props.location.pathname === "/"
 	}
 
+	shelfChanger = (event, book) => {
+		event.nativeEvent.preventDefault();
+		event.nativeEvent.stopPropagation();
+		this.props.updateShelf(event.target.value, book);
+		return false;
+	}
+
 	render() {
-		const shelfBooks = this.state.isIndexPage ? this.props.books.slice(0,10) : this.props.books;
+		const shelfBooks = this.state.isIndexPage ? this.props.books.slice(0, 10) : this.props.books;
 
 		return (
 			<div className="list-books-content">
@@ -41,7 +48,10 @@ class Shelf extends Component {
 													}}>
 													</div>
 													<div className="book-shelf-changer">
-														<select value={book.shelf} onChange={(event) => this.props.updateShelf(event.target.value, book)} >
+														<select value={book.shelf} onChange={(event) => {
+															this.shelfChanger(event,book);
+														}
+														} >
 															<option value="none" disabled>Move to...</option>
 															<option value="currentlyReading">Currently Reading</option>
 															<option value="wantToRead">Want to Read</option>

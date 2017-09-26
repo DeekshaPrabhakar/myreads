@@ -146,7 +146,7 @@
   margin-bottom: 2px;
 }
 .book-authors, .detail-authors  {
-  color: #A1CDCA;
+  color: #46B2A2;
 }
 
 .book-top {
@@ -323,7 +323,7 @@
 .detail-info label {
    font-weight: 400;
    margin-right: 10px;
-   color: #A1CDCA;
+   color: #46B2A2;
 }
 
 .detail-info span {
