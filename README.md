@@ -36,6 +36,7 @@ The project emphasizes using React to build the application and provides an API 
 #### Main Page
 - [x] Each book is a link and when it is clicked, it goes to a book details page
 - [x] Each shelf displays only 10 books. There is a "See All" link for each shelf, when clicked takes to shelf detail page.
+- [x] Loading indicator between server request and response.
 
 ## Backend Server
 
@@ -94,10 +95,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
   </li>
   <li>
-    <div>App Icon made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    <div>App Icon made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0</a></div>.
   </li>
   <li>
-    Themes from <a href="https://color.adobe.com/chocolate-color-theme-9887282/">Adobe</a>
+    Themes from <a href="https://color.adobe.com/chocolate-color-theme-9887282/">Adobe</a>.
   </li>
+  <li>Loading Indicator from <a href="http://articles.dappergentlemen.com/2015/01/13/svg-spinner/">Ryan Allen</li>.
   </ol>
 
