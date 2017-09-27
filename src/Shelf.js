@@ -7,13 +7,6 @@ class Shelf extends Component {
 		isIndexPage: this.props.location.pathname === "/"
 	}
 
-	shelfChanger = (event, book) => {
-		event.nativeEvent.preventDefault();
-		event.nativeEvent.stopPropagation();
-		this.props.updateShelf(event.target.value, book);
-		return false;
-	}
-
 	render() {
 		const shelfBooks = this.state.isIndexPage ? this.props.books.slice(0, 10) : this.props.books;
 
@@ -34,7 +27,7 @@ class Shelf extends Component {
 						<div className="bookshelf-books">
 							<ol className={this.state.isIndexPage ? "books-grid-index" : "books-grid-detail"}>
 								{shelfBooks.map((book) => (
-									<li key={book.id}>
+									<li key={book.id} className="book-grid">
 										<Link to={{
 											pathname: '/books/' + book.id,
 											state: { book: book }
@@ -47,23 +40,23 @@ class Shelf extends Component {
 														backgroundImage: typeof book.imageLinks === "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
 													}}>
 													</div>
-													<div className="book-shelf-changer">
-														<select value={book.shelf} onChange={(event) => {
-															this.shelfChanger(event,book);
-														}
-														} >
-															<option value="none" disabled>Move to...</option>
-															<option value="currentlyReading">Currently Reading</option>
-															<option value="wantToRead">Want to Read</option>
-															<option value="read">Read</option>
-															<option value="none">None</option>
-														</select>
-													</div>
 												</div>
 												<div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
 												<div className="book-authors">{typeof book.authors === "undefined" ? "" : book.authors.join(', ')}</div>
 											</div>
 										</Link>
+										<div className="book-shelf-changer">
+											<select value={book.shelf} onChange={(event) => {
+												this.props.updateShelf(event.target.value, book);
+											}
+											} >
+												<option value="none" disabled>Move to...</option>
+												<option value="currentlyReading">Currently Reading</option>
+												<option value="wantToRead">Want to Read</option>
+												<option value="read">Read</option>
+												<option value="none">None</option>
+											</select>
+										</div>
 									</li>
 								))}
 							</ol>

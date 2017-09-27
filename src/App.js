@@ -31,12 +31,11 @@ class App extends Component {
   }
 
   updateShelf = (toShelf, book) => {
-    console.log(book);
+
     let fromShelf = typeof book.shelf !== "undefined" ? book.shelf : "none";
     BooksAPI.update(book, toShelf).then(res => {
+
       book.shelf = toShelf
-
-
       this.setState(state => ({
         [toShelf]: state[toShelf].concat(book),
         [fromShelf]: state[fromShelf].filter((b) => b.id !== book.id)
@@ -58,6 +57,7 @@ class App extends Component {
           </nav>
         </header>
 
+        {/* Index page shows only 10 books. To see all books, go to the shelf detail page */}
         <Route exact path="/" render={props => (
           <section className="mainContent">
             <Shelf books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf} {...props} />
@@ -69,6 +69,7 @@ class App extends Component {
           </section>
         )} />
 
+        {/* Currently Reading shelf detail page */}
         <Route exact path="/CurrentlyReading" render={props => (
           <section className="mainContent">
             <Shelf books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf}  {...props} />
@@ -78,6 +79,7 @@ class App extends Component {
           </section>
         )} />
 
+        {/* Want to read shelf detail page */}
         <Route exact path="/WantToRead" render={props => (
           <section className="mainContent">
             <Shelf books={this.state.wantToRead} shelfDetail="WantToRead" shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf}  {...props} />
@@ -87,21 +89,24 @@ class App extends Component {
           </section>
         )} />
 
+        {/* Read shelf detail page */}
         <Route exact path="/Read" render={props => (
           <section className="mainContent">
-            <Shelf books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} {...props}  />
+            <Shelf books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} {...props} />
             <div className="open-search">
               <Link to="/search">Add a book</Link>
             </div>
           </section>
         )} />
 
+        {/* Book detail page */}
         <Route path="/books/" render={props => (
           <section className="mainContent">
             <BookDetail {...props} />
           </section>
         )} />
 
+        {/* Books search page */}
         <Route path="/search" render={({ history }) => (
           <BookSearch mybooks={this.state.mybooks} updateShelf={this.updateShelf} />
         )} />
