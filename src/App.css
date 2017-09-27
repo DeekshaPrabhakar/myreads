@@ -380,7 +380,13 @@
   font-weight: 100;
 }
 
-@keyframes App-logo-spin {
- from { transform: rotate(0deg); }
-   to { transform: rotate(360deg); }
+
+.loader {
+  text-align: center;
+}
+
+
+.loading-indicator {
+  width: 200px;
+  height: 200px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './Logo64.png';
-import loading from './loading193.gif';
+import loading from './loading.svg';
 import './App.css';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
@@ -22,15 +22,15 @@ class App extends Component {
 
   componentDidMount() {
 
-    // BooksAPI.getAll().then((books) => {
-    //   this.setState({
-    //     currentlyReading: books.filter(book => book.shelf === 'currentlyReading'),
-    //     wantToRead: books.filter(book => book.shelf === 'wantToRead'),
-    //     read: books.filter(book => book.shelf === 'read'),
-    //     mybooks: books,
-    //     isLoading: false
-    //   })
-    // })
+    BooksAPI.getAll().then((books) => {
+      this.setState({
+        currentlyReading: books.filter(book => book.shelf === 'currentlyReading'),
+        wantToRead: books.filter(book => book.shelf === 'wantToRead'),
+        read: books.filter(book => book.shelf === 'read'),
+        mybooks: books,
+        isLoading: false
+      })
+    })
   }
 
   updateShelf = (toShelf, book) => {
@@ -67,23 +67,23 @@ class App extends Component {
         {/* Index page shows only 10 books. To see all books, go to the shelf detail page */}
         <Route exact path="/" render={props => (
           <section className="mainContent">
-           
-              {this.state.isLoading && (
-                <div>
-                <img src="loading193.gif" alt="loading icon" />
-                </div>
-              )}
-           
-              {!this.state.isLoading && (
-                <div>
+
+            {this.state.isLoading && (
+              <div className="loader">
+                <img className="loading-indicator" src={loading} alt="loading icon" />
+              </div>
+            )}
+
+            {!this.state.isLoading && (
+              <div>
                 <Shelf books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf} {...props} />
                 <Shelf books={this.state.wantToRead} shelfDetail="WantToRead" shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf} {...props} />
                 <Shelf books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} {...props} />
                 <div className="open-search">
                   <Link to="/search">Add a book</Link>
                 </div>
-                </div>
-              )}
+              </div>
+            )}
           </section>
         )} />
 
