@@ -4,6 +4,10 @@ Is a bookshelf app that allows you to select and categorize books you have read,
 
 The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
 
+## Walkthrough
+
+<img src="https://github.com/DeekshaPrabhakar/myreads/blob/master/public/myReads.gif" alt="app walkthrough" />
+
 ## Project Specifications
 
 ### Required
@@ -38,7 +42,7 @@ The project emphasizes using React to build the application and provides an API 
 - [x] Each shelf displays only 10 books. There is a "See All" link for each shelf, when clicked takes to shelf detail page.
 - [x] Loading indicator between server request and response.
 
-## Backend Server
+### Backend Server
 
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
@@ -89,17 +93,17 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-## Acknowledgements:
+### Acknowledgements:
 <ol>
   <li>
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
   </li>
   <li>
-    <div>App Icon made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0</a></div>.
+  App Icon made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0.</a>
   </li>
   <li>
-    Themes from <a href="https://color.adobe.com/chocolate-color-theme-9887282/">Adobe</a>.
+    Themes from <a href="https://color.adobe.com/chocolate-color-theme-9887282/">Adobe.</a>
   </li>
-  <li>Loading Indicator from <a href="http://articles.dappergentlemen.com/2015/01/13/svg-spinner/">Ryan Allen</li>.
+  <li>Loading Indicator from <a href="http://articles.dappergentlemen.com/2015/01/13/svg-spinner/">Ryan Allen.</li>
   </ol>
 
