@@ -132,7 +132,8 @@
   padding: 0;
   margin: 0;
   display: flex;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 
@@ -383,6 +384,7 @@
 
 .loader {
   text-align: center;
+  margin: 100px 0 0 0;
 }
 
 
