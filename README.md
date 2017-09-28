@@ -6,7 +6,7 @@ The project emphasizes using React to build the application and provides an API 
 
 ## Walkthrough
 
-<img src="https://github.com/DeekshaPrabhakar/myreads/blob/master/public/myReads.gif" alt="app walkthrough" />
+<img src="https://github.com/DeekshaPrabhakar/myreads/blob/master/public/myReads1.gif" alt="app walkthrough" />
 
 ## Project Specifications
 
