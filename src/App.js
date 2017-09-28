@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI';
 import logo from './Logo64.png';
 import loading from './loading.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
-import * as BooksAPI from './BooksAPI';
 import Shelf from './Shelf';
 import BookSearch from './BookSearch';
 import BookDetail from './BookDetail';
-import { Link } from 'react-router-dom';
+import ShelfDetail from './ShelfDetail';
 
 class App extends Component {
 
@@ -87,34 +88,17 @@ class App extends Component {
           </section>
         )} />
 
-        {/* Currently Reading shelf detail page */}
+        {/* Shelf Detail Pages */}
         <Route exact path="/CurrentlyReading" render={props => (
-          <section className="mainContent">
-            <Shelf books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf}  {...props} />
-            <div className="open-search">
-              <Link to="/search">Add a book</Link>
-            </div>
-          </section>
+          <ShelfDetail books={this.state.currentlyReading} shelfDetail="CurrentlyReading" shelfValue="currentlyReading" shelfName="Currently Reading" updateShelf={this.updateShelf}  {...props} />
         )} />
 
-        {/* Want to read shelf detail page */}
         <Route exact path="/WantToRead" render={props => (
-          <section className="mainContent">
-            <Shelf books={this.state.wantToRead} shelfDetail="WantToRead" shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf}  {...props} />
-            <div className="open-search">
-              <Link to="/search">Add a book</Link>
-            </div>
-          </section>
+          <ShelfDetail books={this.state.wantToRead} shelfDetail="WantToRead" shelfValue="wantToRead" shelfName="Wanna Read" updateShelf={this.updateShelf}  {...props} />
         )} />
 
-        {/* Read shelf detail page */}
         <Route exact path="/Read" render={props => (
-          <section className="mainContent">
-            <Shelf books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} {...props} />
-            <div className="open-search">
-              <Link to="/search">Add a book</Link>
-            </div>
-          </section>
+          <ShelfDetail books={this.state.read} shelfDetail="Read" shelfValue="read" shelfName="Read" updateShelf={this.updateShelf} {...props} />
         )} />
 
         {/* Book detail page */}
