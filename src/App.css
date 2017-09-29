@@ -405,3 +405,18 @@
 .no-match span {
   color: #c84b65;
 }
+
+
+.no-book-cover {
+  text-align: center;
+  display: table;
+}
+
+
+.no-book-cover span {
+  vertical-align: middle;
+  display: table-cell;
+  color: #008c80;
+  font-style: italic;
+}
+

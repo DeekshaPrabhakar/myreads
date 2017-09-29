@@ -6,11 +6,14 @@ class Book extends Component {
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{
+                    <div className={typeof book.imageLinks === "undefined" ? "book-cover no-book-cover" : "book-cover"} style={{
                         width: 128,
                         height: 193,
                         backgroundImage: typeof book.imageLinks === "undefined" ? "none" : `url(${book.imageLinks.thumbnail})`
                     }}>
+                    {typeof book.imageLinks === "undefined" && (
+                        <span>No Cover Available</span>
+                    )}
                     </div>
                 </div>
                 <div className="book-title">{typeof book.title === "undefined" ? "" : book.title}</div>
