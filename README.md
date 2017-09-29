@@ -6,7 +6,7 @@ The project emphasizes using React to build the application and provides an API 
 
 ## Walkthrough
 
-<img src="https://github.com/DeekshaPrabhakar/myreads/blob/master/public/myReads1.gif" alt="app walkthrough" />
+<img src="https://github.com/DeekshaPrabhakar/myreads/blob/master/public/myReads3.gif" alt="app walkthrough" />
 
 ## Project Specifications
 
@@ -37,10 +37,10 @@ The project emphasizes using React to build the application and provides an API 
 - [x] All JSX code is formatted properly and functional.
 
 ### Optional
-#### Main Page
-- [x] Each book is a link and when it is clicked, it goes to a book details page
+- [x] Each book is a link and when it is clicked, goes to a book details page.
 - [x] Each shelf displays only 10 books. There is a "See All" link for each shelf, when clicked takes to shelf detail page.
 - [x] Loading indicator between server request and response.
+- [x] 404 error page when url doesn't match any route
 
 ### Backend Server
 
@@ -87,7 +87,7 @@ search(query, maxResults)
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
 ## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
+The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
 ## Create React App
 
