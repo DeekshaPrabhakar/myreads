@@ -47,6 +47,7 @@ class App extends Component {
       this.setState(state => ({
         [toShelf]: state[toShelf].concat(book),
         [fromShelf]: state[fromShelf].filter((b) => b.id !== book.id),
+        mybooks: state.mybooks.filter((b) => b.id !== book.id).concat(book),
         isLoading: false
       }))
     })

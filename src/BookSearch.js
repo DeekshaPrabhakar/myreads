@@ -61,6 +61,31 @@ class BookSearch extends Component {
 		})
 	}
 
+	updateShelfLocal = (toShelf, book) => {
+		const mybooks = this.props.mybooks.filter((b) => b.id !== book.id).concat(book);//optimistic update
+		const books = this.state.books;
+
+		if (typeof books !== "undefined" && typeof books.map === "function") {
+
+			//compare with my books in shelves and update the shelf property
+			books.forEach(function (book) {
+				var mybook = mybooks.filter(x => x.id === book.id);
+				if (mybook.length > 0) {
+					book.shelf = mybook[0].shelf;
+				}
+				else {
+					book.shelf = "none";
+				}
+			});
+
+			this.setState({
+				books: books
+			});
+		}
+
+		this.props.updateShelf(toShelf, book);
+	}
+
 	render() {
 		return (
 			<div className="search-books">
@@ -86,7 +111,7 @@ class BookSearch extends Component {
 									}}>
 										<Book book={book} />
 									</Link>
-									<ShelfChanger book={book} updateShelf={this.props.updateShelf} />
+									<ShelfChanger book={book} updateShelf={this.updateShelfLocal} />
 								</li>
 							))}
 						</ol>
