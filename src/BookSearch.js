@@ -21,8 +21,8 @@ class BookSearch extends Component {
 		})
 		const mybooks = this.props.mybooks;
 
-		BooksAPI.search(this.state.query, 20).then((books) => {
-
+		BooksAPI.search(query, 20).then((books) => {
+	
 			if (typeof books !== "undefined" && typeof books.map === "function") {
 
 				//compare with my books in shelves and update the shelf property
