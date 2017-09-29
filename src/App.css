@@ -402,7 +402,8 @@
 }
 
 
-.no-match span {
+.no-match span, 
+.error-label  {
   color: #c84b65;
 }
 
@@ -419,4 +420,3 @@
   color: #008c80;
   font-style: italic;
 }
-

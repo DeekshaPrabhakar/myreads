@@ -10,7 +10,8 @@ class BookSearch extends Component {
 	state = {
 		query: '',
 		books: [],
-		isLoading: false
+		isLoading: false,
+		isError: false
 	}
 
 	updateQuery = (query) => {
@@ -22,8 +23,16 @@ class BookSearch extends Component {
 		const mybooks = this.props.mybooks;
 
 		BooksAPI.search(query, 20).then((books) => {
-	
-			if (typeof books !== "undefined" && typeof books.map === "function") {
+			console.log(books);
+
+			if (typeof books !== "undefined" && typeof books.error != "undefined") {
+				this.setState({
+					books: [],
+					isLoading: false,
+					isError: true
+				});
+			}
+			else if (typeof books !== "undefined" && typeof books.map === "function") {
 
 				//compare with my books in shelves and update the shelf property
 				books.forEach(function (book) {
@@ -37,12 +46,15 @@ class BookSearch extends Component {
 				});
 
 				this.setState({
+					isError: false,
 					books: books,
 					isLoading: false
 				});
 			}
 			else {
 				this.setState({
+					isError: false,
+					books: [],
 					isLoading: false
 				});
 			}
@@ -79,6 +91,11 @@ class BookSearch extends Component {
 							))}
 						</ol>
 					)}
+
+					{!this.state.isLoading && this.state.isError && (
+						<p className="error-label">No results available for this search. Try a different search term.</p>
+					)}
+
 				</div>
 			</div>
 		)
