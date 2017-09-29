@@ -392,3 +392,16 @@
   width: 200px;
   height: 200px;
 }
+
+
+.no-match {
+  text-align: center;
+  font-size: 4em;
+  padding: 50px;
+  color: #008c80;
+}
+
+
+.no-match span {
+  color: #c84b65;
+}
